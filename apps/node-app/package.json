@@ -3,18 +3,25 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-"scripts": {
-  "dev": "tsnd --respawn --clear src/app.ts",
-  "build": "rimraf ./dist && tsc",
-  "start": "pnpm run build && node dist/app.js"
+  "scripts": {
+    "dev": "tsnd --respawn --clear src/app.ts",
+    "build": "rimraf ./dist && tsc",
+    "start": "pnpm run build && node dist/app.js",
+    "prisma:migrate": "prisma migrate dev --name init",
+    "prisma:generate": "prisma generate",
+    "prisma:deploy": "prisma migrate deploy"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.14.9",
+    "prisma": "^5.16.1",
     "rimraf": "^5.0.7",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@prisma/client": "5.16.1"
   }
 }

@@ -1,1 +1,9 @@
-console.log("hola de sde node")
+import { PrismaClient } from "@prisma/client";
+
+(async()=>{
+    main()
+})();
+
+async function main() {
+
+}
