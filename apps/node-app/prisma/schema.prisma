@@ -28,5 +28,5 @@ model UserModel {
   lastName   String
   role       Roles
   createdAt  DateTime @default(now())
-  updateddAt DateTime
+  updateddAt DateTime @default(now())
 }

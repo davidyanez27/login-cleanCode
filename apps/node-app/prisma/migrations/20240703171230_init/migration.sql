@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "UserModel" ALTER COLUMN "updateddAt" SET DEFAULT CURRENT_TIMESTAMP;
