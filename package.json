@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "api:dev": "pnpm --filter node-app dev",
-    "api:build": "pnpm --filter node-app build",
-    "api:start": "pnpm --filter node-app start",
-    "react:dev": "pnpm --filter react-app dev",
+    "api:docker" : "pnpm --filter node-app docker",
+    "api:dev"    : "pnpm --filter node-app dev",
+    "api:build"  : "pnpm --filter node-app build",
+    "api:start"  : "pnpm --filter node-app start",
+    "react:dev"  : "pnpm --filter react-app dev",
     "react:build": "pnpm --filter react-app build",
     "react:start": "pnpm --filter react-app start"
   },

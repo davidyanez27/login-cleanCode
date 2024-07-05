@@ -1,14 +1,17 @@
-import { RegisterEntity } from "../../entities";
+import { UserEntity, Roles } from "../../entities";
+import { UserRepository } from "../../repository";
 
 interface RegisterUseCase {
-        execute(user: RegisterEntity): Promise<boolean>;
+        execute(user: UserEntity): Promise<void>;
 }
 
-export class registerUser implements RegisterUseCase {
-        
-        
-        execute(user: RegisterEntity): Promise<boolean> {
-                throw new Error("Method not implemented.");
+export class RegisterUser implements RegisterUseCase {
+        constructor(
+                private readonly repository: UserRepository
+        ) { }
+
+        execute(user: UserEntity): Promise<void> {
+                return this.repository.create(user);
         }
 
 }

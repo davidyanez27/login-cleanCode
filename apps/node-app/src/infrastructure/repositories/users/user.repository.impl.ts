@@ -1,5 +1,6 @@
 import { UserDatasource } from "../../../domain/datasources";
-import { RegisterEntity, LoginEntity } from "../../../domain/entities";
+import { RegisterUserDto, LoginUserDto } from "../../../domain/dtos";
+import { UserEntity } from "../../../domain/entities";
 import { UserRepository } from "../../../domain/repository";
 
 export class UserRepositoryImpl implements UserRepository {
@@ -7,13 +8,20 @@ export class UserRepositoryImpl implements UserRepository {
     constructor (
         private readonly userDatasource : UserDatasource,
     ){}
-
-    registerUser(user: RegisterEntity): Promise<void> {
-        return this.userDatasource.registerUser( user );
+    create(user: RegisterUserDto): Promise<void> {
+        return this.userDatasource.create( user );
     }
-
-    loginUser(user: LoginEntity): Promise<void> {
+    findById(user: LoginUserDto): Promise<void> {
         throw new Error("Method not implemented.");
     }
+    updateById(user: LoginUserDto): Promise<void> {
+        throw new Error("Method not implemented.");
+    }
+    deleteById(user: LoginUserDto): Promise<void> {
+        throw new Error("Method not implemented.");
+    }
+
+
+
 
 }

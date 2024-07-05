@@ -1,10 +1,12 @@
+import { RegisterUserDto } from "../../dtos";
+
 export enum Roles {
     admin = 'admin',
     user  = 'user', 
 }
 
 
-export class RegisterEntity {
+export class UserEntity {
 
     constructor(
         public name       : string,
@@ -18,4 +20,6 @@ export class RegisterEntity {
         public updateddAt?: Date,
 
     ){}
+
 }
+
