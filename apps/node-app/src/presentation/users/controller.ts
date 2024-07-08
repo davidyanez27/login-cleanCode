@@ -21,10 +21,7 @@ export class AuthController {
     public registerUser = (req: Request, res: Response) => {
         const [error, registerUserDto] = RegisterUserDto.create(req.body);
         if ( error ) return res.status(400).json({error});
-        console.log(error)
 
-        // const user = await this.userRepository.create(registerUserDto!);
-        // res.status(200).json('Usuario Creado correctamente');
         new RegisterUser( this.userRepository)
          .execute(registerUserDto!)
          .then((user) =>res.json(user))

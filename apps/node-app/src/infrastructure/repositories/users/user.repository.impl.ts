@@ -8,7 +8,7 @@ export class UserRepositoryImpl implements UserRepository {
     constructor (
         private readonly userDatasource : UserDatasource,
     ){}
-    create(user: RegisterUserDto): Promise<void> {
+    create(user: RegisterUserDto): Promise<UserEntity> {
         return this.userDatasource.create( user );
     }
     findById(user: LoginUserDto): Promise<void> {

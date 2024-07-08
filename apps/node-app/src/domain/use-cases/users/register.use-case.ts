@@ -2,7 +2,7 @@ import { UserEntity, Roles } from "../../entities";
 import { UserRepository } from "../../repository";
 
 interface RegisterUseCase {
-        execute(user: UserEntity): Promise<void>;
+        execute(user: UserEntity): Promise<UserEntity>;
 }
 
 export class RegisterUser implements RegisterUseCase {
@@ -10,7 +10,7 @@ export class RegisterUser implements RegisterUseCase {
                 private readonly repository: UserRepository
         ) { }
 
-        execute(user: UserEntity): Promise<void> {
+        execute(user: UserEntity): Promise<UserEntity> {
                 return this.repository.create(user);
         }
 

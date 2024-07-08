@@ -1,6 +1,5 @@
 import { regularExps } from "../../../config";
-import { Roles } from "../../entities";
-import { CustomError } from "../../errors/customs.error";
+import { entityRoles } from "../../entities";
 
 export class RegisterUserDto {
     constructor(
@@ -10,22 +9,14 @@ export class RegisterUserDto {
         public readonly password   : string,
         public readonly firstName  : string,
         public readonly lastName   : string,
-        public readonly role       : Roles,
+        public readonly role       : entityRoles,
 
     ){}
 
 
     static create( props: {[key:string]:any}): [string?, RegisterUserDto?]{
         const {name, username, email, password, firstName, lastName, role } = props;
-
-        // if (!name) throw CustomError.badRequest('Missing name');
-        // if (!username) throw CustomError.badRequest('Missing username');
-        // if (!regularExps.email.test(email)) throw CustomError.badRequest('Missing email');
-        // if( !regularExps.password.test(password)) throw CustomError.badRequest('password contains at least eight characters, one special characters, uppercase and one number');
-        // if (!password) throw CustomError.badRequest('Missing password');
-        // if (!firstName) throw CustomError.badRequest('Missing firstName');
-        // if (!lastName) throw CustomError.badRequest('Missing lastName');
-        // if (!role) throw CustomError.badRequest('Missing role');
+        const validRoles = Object.values(entityRoles);
 
         if( !name ) return ['Name property is required'];
         if( !username ) return ['username property is required'];
@@ -35,6 +26,7 @@ export class RegisterUserDto {
         if( !firstName ) return ['firstName property is required'];
         if( !lastName ) return ['lastName property is required'];
         if( !role ) return ['role property is required'];
+        if( !validRoles.includes(role) ) return [`Invalid role: ${role}. Valid roles are: ${validRoles.join(', ')}`];
         
         return [undefined, new RegisterUserDto(name, username, email, password, firstName, lastName, role)];
     }
