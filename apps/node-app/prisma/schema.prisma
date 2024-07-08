@@ -22,7 +22,7 @@ model UserModel {
   id         Int      @id @default(autoincrement())
   name       String
   username   String
-  email      String
+  email      String   @unique
   password   String
   firstName  String
   lastName   String
