@@ -28,11 +28,19 @@ export class UserDatasourceImpl implements UserDatasource {
                 }
             }
         )
+        console.log(newUser)
+        
         return UserEntity.fromObject(newUser);
 
     }
-    findById(user: LoginUserDto): Promise<void> {
-        throw new Error('Method not implemented.');
+    async findById(user: LoginUserDto): Promise<UserEntity> {
+        const existUser = await prisma.userModel.findUnique({ where: { email: user.email}})
+        if(!existUser) throw CustomError.badRequest('Invalid Credentials');
+        
+        const isMatching = bcryptAdapter.compare(user.password, existUser.password);
+        if (!isMatching) throw CustomError.badRequest('Invalid Credentials');
+        
+        return UserEntity.fromObject(existUser);
     }
     updateById(user: LoginUserDto): Promise<void> {
         throw new Error('Method not implemented.');

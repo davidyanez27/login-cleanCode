@@ -1,16 +1,16 @@
 export class LoginUserDto {
     constructor(
-        public readonly username:string,
+        public readonly email:string,
         public readonly password: string,
     ){}
 
     static login ( props: { [key:string]:any}): [string?, LoginUserDto?]{
-        const{username, password} = props;
+        const{email, password} = props;
 
         
-        if( !username ) return ['Name property is required', undefined];
-        if( !password ) return ['Name property is required', undefined];
-        return [undefined, new LoginUserDto(username, password)]
+        if( !email ) return ['email property is required', undefined];
+        if( !password ) return ['password property is required', undefined];
+        return [undefined, new LoginUserDto(email, password)]
     }
 
 }

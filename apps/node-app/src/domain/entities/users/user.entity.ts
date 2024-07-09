@@ -1,9 +1,13 @@
-import { RegisterUserDto } from "../../dtos";
 import { CustomError } from "../../errors/customs.error";
 
 export enum entityRoles {
     admin = 'admin',
     user = 'user',
+}
+
+export interface user {
+    user: UserEntity,
+    jwt:string
 }
 
 
@@ -37,7 +41,6 @@ export class UserEntity {
         if (!createdAt) throw CustomError.badRequest('Missing createdAt');
         if (!updateddAt) throw CustomError.badRequest('Missing updateddAt');
 
-        
         if (role === 'ADMIN') parseRole = entityRoles.admin;
         if (role === 'USER') parseRole = entityRoles.user;
 

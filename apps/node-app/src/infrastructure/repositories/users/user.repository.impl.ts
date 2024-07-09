@@ -11,8 +11,8 @@ export class UserRepositoryImpl implements UserRepository {
     create(user: RegisterUserDto): Promise<UserEntity> {
         return this.userDatasource.create( user );
     }
-    findById(user: LoginUserDto): Promise<void> {
-        throw new Error("Method not implemented.");
+    findById(user: LoginUserDto): Promise<UserEntity> {
+       return this.userDatasource.findById( user );
     }
     updateById(user: LoginUserDto): Promise<void> {
         throw new Error("Method not implemented.");
